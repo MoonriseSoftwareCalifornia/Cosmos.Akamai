@@ -1,4 +1,4 @@
-name: .NET Build and Unit Tests
+name: .NET Build, Unit Tests, NuGet Pkg
 
 on:
   push:
