@@ -64,13 +64,17 @@ namespace CDT.Akamai.EdgeAuth
         ///     a byte[] representation of the hash. If the Stream is a null object
         ///     then null will be returned. If the Stream is empty an empty byte[] {} will be returned.
         /// </returns>
-        public static byte[] ComputeHash(this Stream stream, ChecksumAlgorithm hashType = ChecksumAlgorithm.SHA256,
+        public static byte[]? ComputeHash(this Stream stream, ChecksumAlgorithm hashType = ChecksumAlgorithm.SHA256,
             long? maxBodySize = null)
         {
             if (stream == null) return null;
 
             using (var algorithm = HashAlgorithm.Create(hashType.ToString()))
             {
+                if (algorithm == null)
+                {
+                    return null;
+                }
                 if (maxBodySize != null && maxBodySize > 0)
                     return algorithm.ComputeHash(stream.ReadExactly((long)maxBodySize));
                 return algorithm.ComputeHash(stream);

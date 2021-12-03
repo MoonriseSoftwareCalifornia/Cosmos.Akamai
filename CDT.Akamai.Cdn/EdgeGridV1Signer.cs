@@ -41,7 +41,7 @@ namespace CDT.Akamai.EdgeAuth
     {
         public const string AuthorizationHeader = "Authorization";
 
-        public EdgeGridV1Signer(IList<string> headers = null, long? maxBodyHashSize = 2048)
+        public EdgeGridV1Signer(IList<string>? headers = null, long? maxBodyHashSize = 2048)
         {
             HeadersToInclude = headers ?? new List<string>();
             MaxBodyHashSize = maxBodyHashSize;
@@ -76,7 +76,7 @@ namespace CDT.Akamai.EdgeAuth
         /// <param name="credential">the credential used in the signing</param>
         /// <param name="uploadStream"></param>
         /// <returns>the signed request</returns>
-        public WebRequest Sign(WebRequest request, ClientCredential credential, Stream uploadStream = null)
+        public WebRequest Sign(WebRequest request, ClientCredential credential, Stream uploadStream)
         {
             var timestamp = DateTime.UtcNow;
 
@@ -99,7 +99,7 @@ namespace CDT.Akamai.EdgeAuth
         /// <param name="credential"></param>
         /// <param name="uploadStream"></param>
         /// <returns> the output stream of the response</returns>
-        public Stream Execute(WebRequest request, ClientCredential credential, Stream uploadStream = null)
+        public Stream Execute(WebRequest request, ClientCredential credential, Stream uploadStream)
         {
             //Make sure that this connection will behave nicely with multiple calls in a connection pool.
             ServicePointManager.EnableDnsRoundRobin = true;
@@ -147,6 +147,10 @@ namespace CDT.Akamai.EdgeAuth
             }
             catch (WebException e)
             {
+                if (e.Response == null)
+                {
+                    throw;
+                }
                 // non 200 OK responses throw exceptions.
                 // is this because of Time drift? can we re-try?
                 using (response = e.Response)
@@ -168,8 +172,8 @@ namespace CDT.Akamai.EdgeAuth
                 $"{SignVersion.Name} client_token={credential.ClientToken};access_token={credential.AccessToken};timestamp={timestamp.Value.ToISO8601()};nonce={nonce.ToString().ToLower()};";
         }
 
-        public string GetRequestData(string method, Uri uri, NameValueCollection requestHeaders = null,
-            Stream requestStream = null)
+        public string GetRequestData(string? method, Uri uri, NameValueCollection requestHeaders,
+            Stream? requestStream = null)
         {
             if (string.IsNullOrEmpty(method))
                 throw new ArgumentNullException(nameof(method));
@@ -177,7 +181,7 @@ namespace CDT.Akamai.EdgeAuth
             var headers = GetRequestHeaders(requestHeaders);
             var bodyHash = "";
             // Only POST body is hashed
-            if (method == "POST")
+            if (method == "POST" && requestStream != null)
                 bodyHash = GetRequestStreamHash(requestStream);
 
             return $"{method.ToUpper()}\t{uri.Scheme}\t{uri.Host}\t{uri.PathAndQuery}\t{headers}\t{bodyHash}\t";

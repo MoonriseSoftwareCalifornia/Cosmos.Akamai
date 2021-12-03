@@ -103,7 +103,7 @@ namespace CDT.Akamai.Tests
         public void GetRequestDataTest_EmptyMethod()
         {
             var signer = new EdgeGridV1Signer(new List<string> { "name1" });
-            signer.GetRequestData("", new Uri("http://www.example.com/path.ext?name=value"));
+            signer.GetRequestData("", new Uri("http://www.example.com/path.ext?name=value"), null);
         }
 
         [TestMethod]
@@ -111,7 +111,7 @@ namespace CDT.Akamai.Tests
         public void GetRequestDataTest_NullMethod()
         {
             var signer = new EdgeGridV1Signer(new List<string> { "name1" });
-            signer.GetRequestData(null, new Uri("http://www.example.com/path.ext?name=value"));
+            signer.GetRequestData(null, new Uri("http://www.example.com/path.ext?name=value"), null);
         }
 
         [TestMethod]
@@ -119,9 +119,9 @@ namespace CDT.Akamai.Tests
         {
             var signer = new EdgeGridV1Signer(new List<string> { "name1" });
             Assert.AreEqual("GET\thttp\twww.example.com\t/\t\t\t",
-                signer.GetRequestData("GET", new Uri("http://www.example.com")));
+                signer.GetRequestData("GET", new Uri("http://www.example.com"), null));
             Assert.AreEqual("GET\thttp\twww.example.com\t/path.ext?name=value\t\t\t",
-                signer.GetRequestData("GET", new Uri("http://www.example.com/path.ext?name=value")));
+                signer.GetRequestData("GET", new Uri("http://www.example.com/path.ext?name=value"), null));
 
             var headers = new NameValueCollection { { "name1", "value1" } };
             Assert.AreEqual("GET\thttp\twww.example.com\t/path.ext?name=value\tname1:value1\t\t\t",
@@ -271,7 +271,7 @@ namespace CDT.Akamai.Tests
             var uri = new Uri("http://www.example.com/");
 
             var request = new HttpWebRequestTest(uri);
-            signer.Sign(request, credential);
+            signer.Sign(request, credential, null);
 
             Assert.AreEqual(request.Headers.Count, 1);
 

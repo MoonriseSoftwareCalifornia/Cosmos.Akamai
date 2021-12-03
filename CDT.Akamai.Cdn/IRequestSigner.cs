@@ -33,7 +33,7 @@ namespace CDT.Akamai.EdgeAuth
         /// <param name="credential">the credential used in the signing</param>
         /// <param name="uploadStream">the optional stream to upload</param>
         /// <returns>the web request with the added signature headers</returns>
-        WebRequest Sign(WebRequest request, ClientCredential credential, Stream uploadStream = null);
+        WebRequest Sign(WebRequest request, ClientCredential credential, Stream uploadStream);
 
         /// <summary>
         ///     Signs and Executes a request with the client credential.
@@ -42,6 +42,6 @@ namespace CDT.Akamai.EdgeAuth
         /// <param name="credential">the credential used in the signing</param>
         /// <param name="uploadStream">the optional stream to upload</param>
         /// <returns>the stream from the response (may be empty)</returns>
-        Stream Execute(WebRequest request, ClientCredential credential, Stream uploadStream = null);
+        Stream Execute(WebRequest request, ClientCredential credential, Stream uploadStream);
     }
 }

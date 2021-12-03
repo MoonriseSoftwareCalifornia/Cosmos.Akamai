@@ -33,7 +33,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\CDT.Akamai.Cdn\CDT.Akamai.Cdn.csproj" />
-		<ProjectReference Include="..\CDT.Akamai.EdgeAuth\CDT.Akamai.EdgeAuth.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

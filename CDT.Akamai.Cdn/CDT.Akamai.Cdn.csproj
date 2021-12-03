@@ -11,19 +11,15 @@
     <RepositoryUrl>https://github.com/CosmosSoftware/Cosmos.Akamai</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Akamai CDN;Akamai FastPurge</PackageTags>
-    <AssemblyVersion>6.0.0.1</AssemblyVersion>
-    <FileVersion>6.0.0.1</FileVersion>
-	<Version>6.0.0.1</Version>
+    <AssemblyVersion>6.0.0.2</AssemblyVersion>
+    <FileVersion>6.0.0.2</FileVersion>
+	<Version>6.0.0.2</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\CDT.Akamai.EdgeAuth\CDT.Akamai.EdgeAuth.csproj" />
   </ItemGroup>
 
 </Project>
