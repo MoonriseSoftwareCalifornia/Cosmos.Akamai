@@ -1,6 +1,6 @@
 # Akamai CDN helper
 
-[![.NET Build and Unit Tests](https://github.com/CosmosSoftware/Cosmos.Akamai/actions/workflows/dotnet.yml/badge.svg)](https://github.com/CosmosSoftware/Cosmos.Akamai/actions/workflows/dotnet.yml) [![Publish NuGet Pkg](https://github.com/CosmosSoftware/Cosmos.Akamai/actions/workflows/main.yml/badge.svg)](https://github.com/CosmosSoftware/Cosmos.Akamai/actions/workflows/main.yml)
+[![.NET Build and Unit Tests](https://github.com/CosmosSoftware/Cosmos.Akamai/actions/workflows/dotnet.yml/badge.svg)](https://github.com/CosmosSoftware/Cosmos.Akamai/actions/workflows/dotnet.yml) [![Publish NuGet Pkg](https://github.com/CosmosSoftware/Cosmos.Akamai/actions/workflows/main.yml/badge.svg)](https://github.com/CosmosSoftware/Cosmos.Akamai/actions/workflows/main.yml) ![Nuget](https://img.shields.io/nuget/v/CDT.Akamai.Cdn)
 
 This is a (Nuget Package)[https://www.nuget.org/packages/CDT.Akamai.Cdn/] built for the (Cosmos CMS)[https://github.com/CosmosSoftware/Cosmos.Cms], but can be used by any .Net core version 6 application to purge an Akamai CDN.
 
