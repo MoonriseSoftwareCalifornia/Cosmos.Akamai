@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.IO;
 using System.Reflection;
-using Microsoft.Extensions.Configuration;
 
 namespace CDT.Akamai.Tests
 {

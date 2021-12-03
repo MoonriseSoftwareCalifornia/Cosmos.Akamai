@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,6 +7,15 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Description>Cosmos CMS Akamai CDN interface.</Description>
     <Copyright>Copyright (c) 2022 Eric Kauffman</Copyright>
+    <PackageProjectUrl>https://github.com/CosmosSoftware/Cosmos.Akamai</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/CosmosSoftware/Cosmos.Akamai</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Akamai CDN;Akamai FastPurge</PackageTags>
+    <AssemblyVersion>6.0.0.1</AssemblyVersion>
+    <FileVersion>6.0.0.1</FileVersion>
+	<Version>6.0.0.1</Version>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>

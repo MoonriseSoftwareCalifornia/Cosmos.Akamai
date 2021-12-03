@@ -72,7 +72,7 @@ namespace CDT.Akamai.EdgeAuth
             using (var algorithm = HashAlgorithm.Create(hashType.ToString()))
             {
                 if (maxBodySize != null && maxBodySize > 0)
-                    return algorithm.ComputeHash(stream.ReadExactly((long) maxBodySize));
+                    return algorithm.ComputeHash(stream.ReadExactly((long)maxBodySize));
                 return algorithm.ComputeHash(stream);
             }
         }
@@ -165,7 +165,7 @@ namespace CDT.Akamai.EdgeAuth
         /// <returns>the number of seconds since unix epoch</returns>
         public static long GetEpochSeconds(this DateTime current)
         {
-            return (long) current.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+            return (long)current.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
         }
 
         /// <summary>

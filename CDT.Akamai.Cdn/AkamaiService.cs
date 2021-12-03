@@ -33,7 +33,7 @@ namespace CDT.Akamai.Cdn
         {
             var purgeObjects = new AkamaiPurgeObjects
             { Objects = new[] { _cpCode } };
-            return _client.PurgeProduction(purgeObjects,
+            return _client.Purge(purgeObjects,
                 PurgeEndPoints.CpCodeProductionEndpoint);
         }
         /// <summary>
@@ -44,7 +44,7 @@ namespace CDT.Akamai.Cdn
         /// <returns></returns>
         public string PurgeCdnByUrls(string hostName, string[] paths)
         {
-            return _client.PurgeProductionByUrls(hostName, paths);
+            return _client.PurgeUrls(hostName, paths);
         }
     }
 }

@@ -1,7 +1,5 @@
 ﻿using CDT.Akamai.EdgeAuth;
 using Newtonsoft.Json;
-using System;
-using System.IO;
 using System.Net;
 using System.Text;
 
@@ -37,19 +35,6 @@ namespace CDT.Akamai.Cdn
                 throw new Exception(error);
             }
         }
-
-        //public WebRequest CreateWebRequest(string endPoint, string method)
-        //{
-        //    var webRequest = WebRequest.Create(new Uri($"https://{_akamaiApiHostUrl}{endPoint}"));
-        //    webRequest.Method = method;
-        //    webRequest.ContentType = "application/json";
-        //    ServicePointManager.Expect100Continue = false; var credentials = new ClientCredential(_clientToken, _accessToken, _clientSecret);
-
-        //    var signer = new EdgeGridV1Signer(null, 100000);
-
-        //    webRequest = signer.Sign(webRequest, credentials);
-        //    return webRequest;
-        //}
 
         private WebRequest CreateWebRequest(string endPoint, string method, object jsonObject)
         {
@@ -90,7 +75,7 @@ namespace CDT.Akamai.Cdn
         /// <param name="purgeObject"></param>
         /// <param name="endpoint"></param>
         /// <returns></returns>
-        public string PurgeProduction(AkamaiPurgeObjects purgeObject, string endpoint)
+        public string Purge(AkamaiPurgeObjects purgeObject, string endpoint)
         {
             // http://asparticles.com/Articles/103/how-to-post-json-data-to-webapi-using-csharp
             var request = CreateWebRequest(endpoint, "POST", purgeObject);
@@ -106,6 +91,11 @@ namespace CDT.Akamai.Cdn
             catch (WebException e)
             {
                 using var response = e.Response;
+                if (response == null)
+                {
+                    throw;
+                }
+
                 var httpResponse = (HttpWebResponse)response;
                 Console.WriteLine("Error code: {0}", httpResponse.StatusCode);
                 using var data = response.GetResponseStream();
@@ -121,7 +111,7 @@ namespace CDT.Akamai.Cdn
         /// <param name="hostName"></param>
         /// <param name="urls">paths to purge</param>
         /// <returns>Purge result JSON</returns>
-        public string PurgeProductionByUrls(string hostName, string[] paths)
+        public string PurgeUrls(string hostName, string[] paths)
         {
             var purgeObjects = new AkamaiPurgeObjects
             {
@@ -129,7 +119,7 @@ namespace CDT.Akamai.Cdn
                 Objects = paths
             };
 
-            return PurgeProduction(purgeObjects, PurgeEndPoints.UrlProductionEndpoint);
+            return Purge(purgeObjects, PurgeEndPoints.UrlProductionEndpoint);
         }
     }
 }

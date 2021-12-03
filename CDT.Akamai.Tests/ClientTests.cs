@@ -1,7 +1,7 @@
-﻿using System;
-using CDT.Akamai.Cdn;
+﻿using CDT.Akamai.Cdn;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace CDT.Akamai.Tests
 {
@@ -73,7 +73,7 @@ namespace CDT.Akamai.Tests
             //string json = "{ \"objects\": [ 959654 ] }";
             try
             {
-                var result = client.PurgeProduction(new AkamaiPurgeObjects { Objects = new[] { "1118561" } },
+                var result = client.Purge(new AkamaiPurgeObjects { Objects = new[] { "1118561" } },
                     PurgeEndPoints.CpCodeProductionEndpoint);
                 Assert.IsTrue(result.Contains("Request accepted"));
             }
@@ -110,7 +110,7 @@ namespace CDT.Akamai.Tests
             try
             {
                 var purgeObjects = new AkamaiPurgeObjects() { };
-                var result = client.PurgeProductionByUrls("akamaipremium.dev.technology.ca.gov", new string [] { "/" });
+                var result = client.PurgeUrls("akamaipremium.dev.technology.ca.gov", new string[] { "/" });
                 Assert.IsTrue(result.Contains("Request accepted"));
             }
             catch (Exception e)
@@ -123,7 +123,7 @@ namespace CDT.Akamai.Tests
         [TestMethod]
         public void Invalidate_MultipleUrls_Success()
         {
-            
+
             var accessToken = GetConfigValue("AccessToken");
             var clientToken = GetConfigValue("ClientToken");
             var secret = GetConfigValue("Secret");
@@ -131,7 +131,7 @@ namespace CDT.Akamai.Tests
 
             var client = new AkamaiCdnClient(clientToken, accessToken, secret, akamaiHost);
 
-            var result = client.PurgeProductionByUrls("akamaipremium.dev.technology.ca.gov", new string[] {
+            var result = client.PurgeUrls("akamaipremium.dev.technology.ca.gov", new string[] {
                     "/index.htm",
                     "/hope/index.html"
                     });

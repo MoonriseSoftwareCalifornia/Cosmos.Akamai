@@ -15,11 +15,10 @@
 // Author: colinb@akamai.com  (Colin Bendell)
 //
 
-using System;
-using System.Collections;
 using CDT.Akamai.EdgeAuth;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace CDT.Akamai.Tests
 {
@@ -72,9 +71,9 @@ namespace CDT.Akamai.Tests
         [TestMethod]
         public void ConstructorDefaultTest_NullSecret()
         {
-            
+
             Assert.ThrowsException<ArgumentNullException>(() => new ClientCredential(_clientToken, _accessToken, null));
-        
+
         }
 
         [TestMethod]

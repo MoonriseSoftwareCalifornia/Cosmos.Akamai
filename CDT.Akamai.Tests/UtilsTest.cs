@@ -15,11 +15,11 @@
 // Author: colinb@akamai.com  (Colin Bendell)
 //
 
+using CDT.Akamai.EdgeAuth;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
 using System.Text;
-using CDT.Akamai.EdgeAuth;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CDT.Akamai.Tests
 {
