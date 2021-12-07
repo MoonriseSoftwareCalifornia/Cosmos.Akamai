@@ -11,9 +11,9 @@
     <RepositoryUrl>https://github.com/CosmosSoftware/Cosmos.Akamai</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Akamai CDN;Akamai FastPurge</PackageTags>
-    <AssemblyVersion>6.0.0.2</AssemblyVersion>
-    <FileVersion>6.0.0.2</FileVersion>
-	<Version>6.0.0.2</Version>
+    <AssemblyVersion>6.0.0.4</AssemblyVersion>
+    <FileVersion>6.0.0.4</FileVersion>
+	<Version>6.0.0.4</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
